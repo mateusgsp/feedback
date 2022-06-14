@@ -1,9 +1,7 @@
-import React, { FormEvent, useEffect } from 'react'
+import { FormEvent, useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { Input } from '../Input'
-import { List } from '../List'
-import { ListItem } from '../List/ListItem'
-import { useState } from 'react'
+import { Input } from './Input';
+import { ListItem } from './ToDoItem';
 
 
 interface ToDo {
@@ -65,15 +63,13 @@ export function ToDoList() {
 
   return (
     <div className="flex items-center flex-col m-4 w-full">
-      <Input theValue={handleChange} onClickToDo={onClickToDo} />
-      <List >
+    <h1 className="text-2xl font-thin">Lista de Tarefas</h1>
+      <Input theValue={handleChange} onClickToDo={onClickToDo} toDoText={toDo} />
 
-        {toList.map(((item: ToDo) =>
-          <ListItem item={item.task} done={item.completed} toggleToDo={() => toggleToDo(item.id)} key={item.id} deleteToDo={() => deleteTask(item.id)} />
+      {toList.map(((item: ToDo) =>
+        <ListItem item={item.task} done={item.completed} toggleToDo={() => toggleToDo(item.id)} key={item.id} deleteToDo={() => deleteTask(item.id)} />
 
-        ))}
-      </List>
-
+      ))}
     </div>
   );
 }
