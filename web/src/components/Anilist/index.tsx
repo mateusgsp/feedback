@@ -1,29 +1,40 @@
 import { useQuery } from "@apollo/client";
-import { AnilistGraphQLClient } from "./anilistapi"
 import { SerieList } from "./SerieList"
 import { browseSeries, seriesSearch } from "./service/querys";
 import NavBar from "./Navbar";
+import { CircleNotch } from "phosphor-react";
+import { FormEvent, useState } from "react";
 
 export function Anilist() {
-    const { loading, error, data } = useQuery(browseSeries, {
+    const [searchText, setSearchText] = useState('' as string | null)
+
+    const { loading, error, data, refetch } = useQuery(seriesSearch, {
         variables: {
-            /*query: "Bleach"*/
-            page: 1
+            query: "Bleach"
         }
     });
 
     if (loading) {
-        return (<div className="h-screen w-screen flex items-center justify-center">
-            <p className="mb-2 font-extrabold text-transparent text-9xl bg-clip-text bg-gradient-to-br from-yellow-300 to-yellow-900 via-amber-600 animate-bounce">Loading...</p></div>);
+        return (<div className="h-screen w-screen flex items-center justify-center text-amber-600">
+            <CircleNotch className="animate-spin h-64 w-64" />
+        </div>);
     }
 
     if (error) {
-        return <p>an error occurred...</p>;
+        return <p>Ocorreu um erro...</p>;
     }
+    const handleSubmit = (event: FormEvent) => {
+        event.preventDefault();
+        refetch({query: searchText as string});
+    };
 
+    const changeSearchText = (event: FormEvent) => {
+        const element = event.target as HTMLInputElement;
+        setSearchText(element.value);
+    };
     console.log(data);
     return (<div className="flex">
-        <NavBar />
+        <NavBar handleSubmit={handleSubmit} changeSearchText={changeSearchText}/>
         <SerieList data={data} />
-    </div>) // <AnilistGraphQLClient />
+    </div>)
 }

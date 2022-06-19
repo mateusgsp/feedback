@@ -5,7 +5,7 @@ import { Widget } from './components/WidgetFeedback'
 
 export function App() {
   return (<>
-    <ApolloProvider client = {AnilistClient}>
+    <ApolloProvider client={AnilistClient}>
       <Anilist />
     </ApolloProvider>
     <Widget />

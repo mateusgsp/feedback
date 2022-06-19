@@ -4,6 +4,7 @@ import { FeedbacksRepository } from '../repositories/feedbacks-repository';
 interface SubmitFeedbackUseCaseRequest {
   type: string;
   comment: string;
+  email?: string;
   screenshot?: string;
 }
 
@@ -14,7 +15,7 @@ export class SubmitFeedbackUseCase {
   ) { }
 
   async execute(request: SubmitFeedbackUseCaseRequest) {
-    const { type, comment, screenshot } = request;
+    const { type, comment, email, screenshot } = request;
 
     if (!type) {
       throw new Error('Type is required.');
@@ -31,6 +32,7 @@ export class SubmitFeedbackUseCase {
     await this.feedbackRepository.create({
       type,
       comment,
+      email,
       screenshot,
     });
 
@@ -40,6 +42,7 @@ export class SubmitFeedbackUseCase {
         `<div style="font-family: sans-serif; font-size: 16px; color: #111;">`,
         `<p>Tipo do feedback: ${type}</p>`,
         `<p>Comentário: ${comment}</p>`,
+        email ? `<p>Email (opcional): ${email}</p>` : '',
         screenshot ? `<img src="${screenshot}" />` : '',
         `</div>`,
       ].join('\n'),

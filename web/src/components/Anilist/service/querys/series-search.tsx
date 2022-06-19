@@ -9,6 +9,7 @@ query ($query: String, $type: MediaType, $isAdult: Boolean = false) {
         romaji
         english
         native
+        userPreferred
       }
       coverImage {
         medium
