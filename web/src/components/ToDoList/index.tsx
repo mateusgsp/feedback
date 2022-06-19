@@ -22,7 +22,7 @@ export function ToDoList() {
   function onClickToDo(event: FormEvent) {
     if (toDo.length === 0) return
 
-    const newTask = { id: uuidv4(), task: toDo, completed: false }; //UU ID 
+    const newTask = { id: uuidv4(), task: toDo, completed: false };
 
     addTask(newTask);
     setToDo('');

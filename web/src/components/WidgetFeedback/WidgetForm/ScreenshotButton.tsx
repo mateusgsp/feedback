@@ -24,7 +24,7 @@ export function ScreenshotButton({ screenshot, onScreenshot }: ScreenshotButtonP
         return (
             <button
                 type="button"
-                className="p-1 w-10 h-10 rounded-md border-transparent flex justify-end items-end text-zinc-400 hover:text-zinc-100 transition-colors"
+                className="p-1 w-10 rounded-md border-transparent flex justify-end items-end text-zinc-400 hover:text-zinc-100 transition-colors"
                 onClick={() => onScreenshot(null)}
                 style={{
                     backgroundImage: `url(${screenshot})`,
@@ -38,7 +38,7 @@ export function ScreenshotButton({ screenshot, onScreenshot }: ScreenshotButtonP
     return (
         <button
             onClick={handleTakeScreenshot}
-            type="button" className="h-10 p-2 bg-zinc-800 rounded-md border-transparent hover:bg-zinc-700 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-900 focus:ring-brand-500 text-zinc-100">
+            type="button" className="h-10 p-2 bg-zinc-300 rounded-md border-transparent hover:bg-zinc-400 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-900 focus:ring-brand-500 text-zinc-600">
             {isTakingScreenshot ? <Loading /> :
                 <Camera className="h-6 w-6" />}
         </button>

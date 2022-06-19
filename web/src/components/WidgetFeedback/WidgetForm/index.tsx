@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import bugImgUrl from '../../../assets/bug.svg';
-import ideaImgUrl from '../../../assets/idea.svg';
-import thoughtImgUrl from '../../../assets/thought.svg';
+import bugImgUrl from '../../../assets/bug.png';
+import ideaImgUrl from '../../../assets/idea.png';
+import thoughtImgUrl from '../../../assets/thought.png';
 import { FeedbackContentStep } from './Steps/FeedbackContentStep';
 import { FeedbackSuccessStep } from './Steps/FeedbackSuccessStep';
 import { FeedbackTypeStep } from './Steps/FeedbackTypeStep';
@@ -41,7 +41,7 @@ export function WidgetForm() {
     }
 
     return (
-        <div className="bg-zinc-900 p-4 relative rounded-2xl mb-4 flex flex-col items-center shadow-lg w-[calc(100vw-2rem)] md:w-auto">
+        <div className="bg-white relative rounded-2xl mb-4 flex flex-col items-center shadow-lg w-[calc(100vw-2rem)] md:w-auto">
             {feedbackSent ? (
                 <FeedbackSuccessStep onFeedbackRestartRequested={handleRestartFeedback} />
             ) : (
@@ -57,9 +57,6 @@ export function WidgetForm() {
                     )}
                 </>
             )}
-            <footer className="text-xs text-neutral-400">
-                Feito por <a href="https://github.com/mateusGPr" className="underline underline-offset-2">Mateus G. Pereira</a>
-            </footer>
         </div>
     );
 }
