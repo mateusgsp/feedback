@@ -1,11 +1,13 @@
+import { ApolloProvider } from '@apollo/client'
 import { Anilist } from './components/Anilist'
-import { ToDoList } from './components/ToDoList'
+import AnilistClient from './components/Anilist/service'
 import { Widget } from './components/WidgetFeedback'
 
 export function App() {
   return (<>
-    <Anilist />
-    <ToDoList />
+    <ApolloProvider client = {AnilistClient}>
+      <Anilist />
+    </ApolloProvider>
     <Widget />
   </>)
 }

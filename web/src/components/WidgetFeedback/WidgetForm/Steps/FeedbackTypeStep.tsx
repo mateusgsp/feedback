@@ -8,8 +8,8 @@ interface FeedbackTypeStepProps {
 
 export function FeedbackTypeStep({ onFeedbackTypeChanged }: FeedbackTypeStepProps) {
     return (<>
-        <header className="w-full p-4 border-b border-gray-200">
-            <span className="leading-6 text-base font-semibold">Deixe seu feedback</span>
+        <header className="w-full p-4 border-b border-gray-800">
+            <span className="leading-6 text-base font-semibold text-slate-600">Deixe seu feedback</span>
             <CloseButton />
         </header>
         <div className="flex pb-8 pt-4 gap-2 w-full px-4">
