@@ -1,6 +1,10 @@
-import {Widget} from './components/WidgetFeedback'
+import { ToDoList } from './components/ToDoList'
+import { Widget } from './components/WidgetFeedback'
 
 export function App() {
-  return <Widget />
+  return (<>
+    <ToDoList />
+    <Widget />
+  </>)
 }
 
