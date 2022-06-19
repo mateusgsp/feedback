@@ -16,6 +16,7 @@ export function FeedbackContentStep(
     { feedbackType, onRestartFeedback, onFeedbackSent }:
         FeedbackContentStepProps) {
     const [comment, setComment] = useState('');
+    const [email, setEmail] = useState('');
     const [screenshot, setScreenshot] = useState<string | null>(null);
     const [isSendingFeedback, setIsSendingFeedback] = useState(false);
 
@@ -29,6 +30,7 @@ export function FeedbackContentStep(
         await api.post('/feedbacks', {
             type: feedbackType,
             comment,
+            email,
             screenshot,
         });
 
@@ -53,11 +55,18 @@ export function FeedbackContentStep(
             <CloseButton />
         </header>
 
-        <form onSubmit={handleSubmitFeedback} className="my-4 w-full">
+        <form onSubmit={handleSubmitFeedback} className="my-4 w-full flex flex-col">
+
+            <input type="text" className="w-full text-sm placeholder-zinc-400 text-zinc-100 border-zinc-600 bg-transparent rounded-md focus:border-brand-500 focus:ring-brand-500 focus:ring-1
+                 outline-none p-1 mb-2"
+                placeholder="Digite seu email (opcional)..."
+                onChange={event => setEmail(event.target.value)} />
+
             <textarea className="min-w-[304px] w-full min-h-[102px] text-sm placeholder-zinc-400 text-zinc-100 border-zinc-600 bg-transparent rounded-md focus:border-brand-500 focus:ring-brand-500 focus:ring-1 resize-none 
                  scrollbar-thumb-zinc-700 scrollbar-thin scrollbar-track-transparent outline-none p-1"
                 placeholder="Conte com detalhes o que está acontecendo..."
                 onChange={event => setComment(event.target.value)}></textarea>
+
 
             <footer className="flex gap-2 mt-2">
                 <ScreenshotButton
